@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script type="module" src="main.js"></script>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        //uniform mat3 uMatrix;
+        attribute vec4 vColor;
+        
+        varying vec4 fColor;
+        
+        void main()
+        {
+            //Reference: https://codesandbox.io/s/webgl-zoom-pan-rotate-9zusj?file=/main.js:238-286
+            gl_Position = vPosition; //vec4((u_matrix * vec3(a_position, 1)).xy, 0, 1);
+            fColor = vColor;
+            gl_PointSize = 2.0;
+        }
+    </script>   
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        
+        varying vec4 fColor;
+        void main()
+        {
+            gl_FragColor = fColor;
+        }
+    </script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <canvas id="gl-canvas" width="900" height="900"></canvas>
+    </div>
+        
+    <div class="sidebar1">
+        <!--<p id="IsMobile"></p>-->
+        <div id="ColorSliders">
+            <div class="SlidersColumn1">
+                <input id="RedSlider" type="range" min="0" max="255" step="1" value="0"><br>
+                <input id="GreenSlider" type="range" min="0" max="255" step="1" value="0"><br>
+                <input id="BlueSlider" type="range" min="0" max="255" step="1" value="0"><br>
+                <input id="AlphaSlider" type="range" min="0" max="255" step="1" value="0"><br> 
+            </div>
+            <div class="SlidersColumn2">
+                <button id="SliderOn"></button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div id="ColorSelect">  
+                <button class="Black SELECTED" value="0.0,0.0,0.0,1.0"></button>
+                <button class="Red" value="1.0,0.0,0.0,1.0"></button>
+                <button class="Yellow" value="1.0,1.0,0.0,1.0"></button>
+                <button class="Green" value="0.0,1.0,0.0,1.0"></button>
+                <button class="Blue" value="0.0,0.0,1.0,1.0"></button>
+                <button class="Magenta" value="1.0,0.0,1.0,1.0"></button>
+        </div>
+        
+
+        <table id="Layers">
+            <tr class="Layer0">
+                <th><button class="LayerVisibility0 VisibilityOn"></button></th>
+                <th><button class="LayerUnlocked0 Unlocked"></button></th>
+                <th><button class="UpDown"></button></th>
+            </tr>
+            <tr class="Layer1">
+                <th><button class="LayerVisibility1 VisibilityOn"></button></th>
+                <th><button class="LayerUnlocked1 Locked"></button></th>
+                <th><button class="UpDown"></button></th>
+            </tr>
+            <tr class="Layer2">
+                <th><button class="LayerVisibility2 VisibilityOn"></button></th>
+                <th><button class="LayerUnlocked2 Locked"></button></th>
+                <th><button class="UpDown"></button></th>
+            </tr>
+  
+
+        </table>
+
+        <div id="ToolSelection">
+            <button class="CursorButton SELECTED"></button>
+            <button class="BrushButton"></button>
+            <button class="EraserButton"></button>
+            <button class="SelectButton"></button>
+        </div>
+        <p>
+            Exactly one of the tools is selected at a time. <br>
+            Each tool can only be used on the active layer, if there is one(the user can lock all layers). <br>
+            If a layer is active but invisible, the stroke will still be registered. <br>
+            You can reorder the layers and see its effects immediately. <br>
+            You can select one of the six preset colors or your own custom color. <br>
+            You can set your custom color using the sliders at any time but it will not be used until you click on it. 
+        </p>
+    </div>
+
+    <div class="footer">
+        <div id="SaveLoad" class="SaveLoadContainer">
+            <button class="Save Download"></button>
+            <form id="Load" novalidate>
+                <input id ="LoadForm" type="file" accept=".txt" style="display: none;" required />
+                <button class="Upload"><label for ="LoadForm"></label></button>
+            </form>
+        </div>
+        <p>Use these buttons to save and load your pictures. Layer data will be preserved.</p>
+    </div>
+
+</body>
+</html>

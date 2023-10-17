@@ -1,0 +1,154 @@
+
+label, button {
+    /*background-color: indigo;*/
+    color: black;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    width: 52px;
+    height: 52px;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  /*
+  .SELECTED {
+    border: 4px solid #04AA6D;
+    color: black;
+  }
+  */
+  .SELECTED{
+    outline-style: outset;
+     
+  }
+
+.Black{
+    background-color: black;
+}
+.Red{
+    background-color: red;
+}
+.Yellow{
+    background-color: yellow;
+}
+.Green{
+    background-color: rgb(0, 255, 0);
+}
+.Blue{
+    background-color: blue;
+}
+.Magenta{
+    background-color: magenta;
+}
+
+
+table{
+    vertical-align: center;
+}
+th{
+    vertical-align: center;
+}
+tr{
+    vertical-align: center;
+}
+
+
+
+
+.VisibilityOn{
+    background-image: url(Icons/visibility-on.png);
+}
+.VisibilityOff{
+    background-image: url(Icons/visibility-off.png);
+}
+
+.Unlocked{
+    background-image: url(Icons/unlocked.png);
+}
+.Locked{
+    background-image: url(Icons/locked.png);
+}
+
+
+.UpDown{
+    background-image: url(Icons/up-down-arrow.png);
+}
+.Up{
+    background-image: url(Icons/up-arrow.png);
+}
+.Down{
+    background-image: url(Icons/down-arrow.png);
+}
+
+.CursorButton{
+    background-image: url(Icons/cursor.png);
+}
+.EraserButton{
+    background-image: url(Icons/eraser.png);
+}
+.BrushButton{
+    background-image: url(Icons/brush.png); 
+}
+.SelectButton{
+    background-image: url(Icons/selection.png); 
+}
+
+.Upload{
+    background-image: url(Icons/upload.png); 
+}
+.Download{
+    background-image: url(Icons/download.png); 
+}
+/*
+.column1{
+    float:left;
+    width: 900px;
+    padding: 15px;
+}
+.column2{
+    float: left;
+    width: 35%;
+
+    padding: 15px;
+    text-align: justify;
+}
+*/
+
+/* Ref: http://web.simmons.edu/~grabiner/comm244/weeknine/css-layouts.html#three_column_unbalanced_layout */
+.content {
+    float: left;         /* This causes the content to move to the left 
+                            It's going to appear to the left of the content because 
+                            we declared it first in our HTML page */
+    width: 930px;        /* We need to set the width whenever we float an element */
+  }
+  
+  .sidebar-one {
+    float: left;         /* This causes the sidebar to move to the left */
+    width: 200px;        /* We need to set the width whenever we float an element */
+  }
+  
+
+  .footer {
+    clear: both;         /* This makes sure that the footer clears both the sidebar and content floats */
+    width: 960px;        /* This sets the footer to stretch the full page width */
+  }
+
+.SlidersColumn1{
+    float: left
+}
+
+.SlidersColumn2{
+
+}
+
+.SaveLoadContainer {
+    display: flex;
+  }
+  
+.Load {
+    margin-left: 20px;
+  }
+  
